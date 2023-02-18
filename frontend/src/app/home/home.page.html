@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Página de Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input type="text" [(ngModel)]="telefone"></ion-input>
+
+    </ion-item>
+    <ion-button color="primary" (click)="criarObjetoPass()">Salvar</ion-button>
+    <!-- <ion-button (click)="getUsers()">Visualizar</ion-button> -->
+    <!-- <ion-button color="primary" (click)="'nextPage()'">Visualizar</ion-button> -->
+    <div><h5>Lista de Contas</h5></div>
+    <ion-row *ngIf="users.length > 0">
+      <ion-col> <strong>Usuario</strong> </ion-col>
+      <ion-col> <strong>Senha</strong> </ion-col>
+      <ion-col> <strong>Email</strong> </ion-col>
+      <ion-col> <strong>Telefone</strong> </ion-col>
+      <ion-col> 
+      </ion-col>
+    </ion-row>
+    <div style="border: 1px solid;"> 
+      <ion-row *ngFor="let user of users">
+
+        <ion-col> <p>{{user.nome}}</p></ion-col>
+
+        <ion-col> <p>{{user.senha}}</p></ion-col>
+        <ion-col><p>{{ user.email }}</p></ion-col>
+        <ion-col><p>{{ user.telefone }}</p></ion-col>  
+        <ion-button fill="clear" (click)="remove(user.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-row>
+    </div>
+        <ion-col> 
+        </ion-col>
+    </ion-grid>
+</ion-content>
